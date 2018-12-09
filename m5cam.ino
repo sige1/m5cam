@@ -25,7 +25,8 @@
 #define CONFIG_XCLK_FREQ 20000000
 #define CAMERA_PIXEL_FORMAT CAMERA_PF_GRAYSCALE
 #define CAMERA_FRAME_SIZE CAMERA_FS_SVGA
-#define CAMERA_LED_GPIO 16
+//#define CAMERA_LED_GPIO 16
+#define CAMERA_LED_GPIO 14  // M5Camera001 4MB PSRAM
 
 
 #include <WiFi.h>
@@ -48,7 +49,7 @@ void setup() {
 
   ESP_ERROR_CHECK(gpio_install_isr_service(0));
   pinMode(CAMERA_LED_GPIO, OUTPUT);
-  digitalWrite(CAMERA_LED_GPIO, HIGH);
+  digitalWrite(CAMERA_LED_GPIO, HIGH); // Lights off
   
   WiFi.disconnect(true);
 
@@ -119,6 +120,8 @@ void setup() {
   destination.sin_addr.s_addr = (uint32_t)IPAddress(192,168,4,2);
   destination.sin_family = AF_INET;
   destination.sin_port = htons(3333);
+
+  digitalWrite(CAMERA_LED_GPIO, LOW); // Lights off
 }
 
 void onClientChange(system_event_id_t event) {
