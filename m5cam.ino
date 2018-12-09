@@ -49,7 +49,7 @@ void setup() {
 
   ESP_ERROR_CHECK(gpio_install_isr_service(0));
   pinMode(CAMERA_LED_GPIO, OUTPUT);
-  digitalWrite(CAMERA_LED_GPIO, HIGH); // Lights off
+  digitalWrite(CAMERA_LED_GPIO, HIGH); // Lights Off
   
   WiFi.disconnect(true);
 
@@ -121,7 +121,7 @@ void setup() {
   destination.sin_family = AF_INET;
   destination.sin_port = htons(3333);
 
-  digitalWrite(CAMERA_LED_GPIO, LOW); // Lights off
+  digitalWrite(CAMERA_LED_GPIO, LOW); // Lights On
 }
 
 void onClientChange(system_event_id_t event) {
